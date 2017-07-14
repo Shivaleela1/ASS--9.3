@@ -1,0 +1,68 @@
+package collections;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.HashMap;
+
+public class Ham {
+
+	public static void main(String[] args) throws IOException{
+		
+		String eid, name, k1, k2;
+		boolean n;
+		
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		HashMap<String, String> hr = new HashMap<String, String>(); //defining HashMap
+		
+		//add key-value pair to HashMap
+		hr.put("e1", "Steve");
+		hr.put("e2", "Harry");
+		hr.put("e3", "Sara");
+		System.out.println(hr);
+		n = true;
+		while(n){
+			System.out.println("Enter 1 : To find employee name using employee ID\n"
+		                + "Enter 2 : To put key-values to table\n"+"Enter 3 : To exit");
+			
+			int n1 = Integer.parseInt(br.readLine());
+			switch(n1)   //switch cases
+			{
+			case 1:  //case to find empName as value using empCode as key
+				
+				System.out.println("Enter Employee ID");   
+				eid = br.readLine();
+				name = hr.get(eid);
+				
+				if(name == null)
+					System.out.println("Sorry Employee ID does'nt exist in table\n");
+				else
+					System.out.println(name);
+				
+				break;
+				
+			case 2:    //case to update table
+				
+				System.out.println("Enter key\n");
+				k1 = br.readLine();
+				System.out.println("Enter value for the above key");
+				k2 = br.readLine();
+				hr.put(k1, k2);
+				System.out.println("Updated table\n"+hr);
+				break;
+				
+			case 3:     //case to close the file
+				
+				System.out.println("File is closed");
+				n = false;
+				break;
+				
+			default:
+				
+				System.out.println("Enter valid input\n");
+				break;
+							
+			}
+		}
+	}
+}
